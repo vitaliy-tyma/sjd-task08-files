@@ -1,14 +1,12 @@
 package info.sjd;
 
-//import java.io.Serializable;
-
-public class LogRec {//implements Serializable{
+public class LogRec {
 	/**
 	 * 
 	 */
 	
 	
-	//private static final long serialVersionUID = 340414075615808978L;
+
 	private long time_stamp;
 	private String session;
 	private String ip;
@@ -39,7 +37,6 @@ public class LogRec {//implements Serializable{
 			this.time_stamp = Long.parseLong(words[0]);
 		}
 		catch (Exception e) {
-//			this.time_stamp = 0;
 		}
 		try {
 			this.session = words[1];
