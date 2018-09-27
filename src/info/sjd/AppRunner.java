@@ -1,10 +1,5 @@
 package info.sjd;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.logging.Logger;
-import info.sjd.Get_SHA512;
-import info.sjd.LogRec;
 import info.sjd.AppendFile;
 
 /**
@@ -60,20 +55,15 @@ public class AppRunner {
 		/** INITIALISATION */
 		final String DIR_NAME = "log/";
 		final String FILE_NAME = DIR_NAME + "task08.txt";
-		
-		
 
 		/** Save logs to file. */
-			AppendFile.appendFile(FILE_NAME);
-
+		AppendFile.appendFile(FILE_NAME);
 
 		/** Read logs from file. Print logs to the logger. */
-			ReadFile.readFile(FILE_NAME);
-
+		ReadFile.readFile(FILE_NAME);
 
 		/** Delete 3 days older records from the log-file. */
-			DelOldRecords.delOldRecords(FILE_NAME);
-
+		DelOldRecords.delOldRecords(FILE_NAME);
 
 	}
 
