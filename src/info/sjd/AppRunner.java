@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.logging.Logger;
 import info.sjd.Get_SHA512;
 import info.sjd.LogRec;
+import info.sjd.AppendFile;
 
 /**
  * 
@@ -59,89 +60,20 @@ public class AppRunner {
 		/** INITIALISATION */
 		final String DIR_NAME = "log/";
 		final String FILE_NAME = DIR_NAME + "task08.txt";
-		Logger logger = Logger.getLogger(AppRunner.class.getName());
 		
 		
-		
-		
-		/*****************************************************
-		 * CHOOSE WORK MODE * 1 - Append file. 2 - Read file to logger. 3 - Delete old
-		 * records (3 days).
-		 ****************************************************/
-		final int MODE = 2;
-		/****************************************************/
-
-		
-		
-		
-		
-		
-		/** WORK ACCORDING TO MODE 1-2-3 */
-		switch (MODE) {
 
 		/** Save logs to file. */
-		case 1: {
-			logger.info("MODE 1 = APPEND FILE.");
-			/** GET SEED */
-			int seed = (int) Get_SHA512.curTime();
+			AppendFile.appendFile(FILE_NAME);
 
-			/** Create list of 10 Strings. */
-			List<LogRec> log_rec_10 = new ArrayList<LogRec>(10);
-
-			for (int i = 0; i < 10; i++) {
-				LogRec log_rec = new LogRec(Get_SHA512.curTime(), Get_SHA512.randomSession9dec(seed + i),
-						Get_SHA512.randomIPhex(seed + i));
-				log_rec_10.add(log_rec);
-			}
-
-
-			if (FileAccess.saveToFile(FILE_NAME, log_rec_10, true)) {
-				logger.info("MAIN: FILE HAS BEEN SAVED.");
-			} else {
-				logger.info("MAIN: FILE HAS NOT BEEN SAVED.");
-			}
-			break;
-		}
 
 		/** Read logs from file. Print logs to the logger. */
-		case 2: {
-			logger.info("MODE 2 = READ FILE.");
+			ReadFile.readFile(FILE_NAME);
 
-			List<String> lines = FileAccess.readFromFile(FILE_NAME);
-			for (String line : lines) {
-				logger.info(line);
-			}
-			break;
-		}
 
 		/** Delete 3 days older records from the log-file. */
-		case 3: {
-			logger.info("MODE 3 = DELETE OLD.");
+			DelOldRecords.delOldRecords(FILE_NAME);
 
-			long curr_time = Get_SHA512.curTime();
-			long three_days_ago = curr_time - 3 * 24 * 60 * 60 * 100;
-
-			List<LogRec> new_lines = new ArrayList<LogRec>();
-
-			List<String> lines = FileAccess.readFromFile(FILE_NAME);
-			for (String line : lines) {
-				String[] words = line.split(" ");
-
-				/** Compare if the line timestamp younger then three days. */
-				if (Long.parseLong(words[0]) > three_days_ago) {
-					LogRec log_rec = new LogRec(line);
-					new_lines.add(log_rec);
-				}
-			}
-			/** Save logs to the new file. */
-			if (FileAccess.saveToFile(FILE_NAME, new_lines, false)) {
-				logger.info("MAIN: NEW FILE HAS BEEN SAVED.");
-			} else {
-				logger.info("MAIN: NEW FILE HAS NOT BEEN SAVED.");
-			}
-			break;
-		}
-		}
 
 	}
 
