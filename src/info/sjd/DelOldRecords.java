@@ -10,7 +10,7 @@ public class DelOldRecords {
 		logger.info("MODE 3 = DELETE OLD.");
 
 		long curr_time = Get_SHA512.curTime();
-		long three_days_ago = curr_time - 3 * 24 * 60 * 60 * 100;
+		long three_days_ago = curr_time - 3 * 24 * 60 * 60 * 1000;
 
 		List<LogRec> new_lines = new ArrayList<LogRec>();
 

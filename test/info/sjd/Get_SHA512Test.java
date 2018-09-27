@@ -30,6 +30,9 @@ class Get_SHA512Test {
 		
 		assertTrue(Get_SHA512.randomIPhex(123456789).length() > 4);
 		assertTrue(Get_SHA512.randomIPhex(0).length() > 4);
+		
+		assertTrue(Get_SHA512.randomIPhex(123456789).length() < 16);
+		assertTrue(Get_SHA512.randomIPhex(0).length() < 16);
 	}
 
 }
