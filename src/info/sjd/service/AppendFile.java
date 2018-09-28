@@ -1,15 +1,14 @@
-package info.sjd;
+package info.sjd.service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Logger;
+
 
 public class AppendFile {
 
 	public static void appendFile(String FILE_NAME) {
-		Logger logger = Logger.getLogger(AppRunner.class.getName());
 		
-		logger.info("MODE 1 = APPEND FILE.");
+
 		/** GET SEED */
 		int seed = (int) Get_SHA512.curTime();
 
@@ -22,10 +21,8 @@ public class AppendFile {
 			log_rec_10.add(log_rec);
 		}
 
-		if (FileAccess.saveToFile(FILE_NAME, log_rec_10, true)) {
-			logger.info("MAIN: FILE HAS BEEN SAVED.");
-		} else {
-			logger.info("MAIN: FILE HAS NOT BEEN SAVED.");
-		}
+		/** Append to the log-file.*/
+		FileAccess.saveToFile(FILE_NAME, log_rec_10, true);
+
 	}
 }

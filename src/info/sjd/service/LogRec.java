@@ -1,4 +1,4 @@
-package info.sjd;
+package info.sjd.service;
 
 public class LogRec {
 	/**

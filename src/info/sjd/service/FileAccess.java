@@ -1,4 +1,4 @@
-package info.sjd;
+package info.sjd.service;
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -8,10 +8,10 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
-import java.util.logging.Logger;
-
 public class FileAccess {
 
+	
+	
 	/** saveToFile */
 	public static boolean saveToFile(String file_name, List<LogRec> log_rec_10, boolean append) {
 		final String LINE_SEP = System.getProperty("line.separator");
@@ -28,9 +28,11 @@ public class FileAccess {
 		return true;
 	}
 
+	
+	
+	
 	/** readFromFile */
 	public static List<String> readFromFile(String file_name) {
-		//Logger logger = Logger.getLogger(AppRunner.class.getName());
 		
 		List<String> lines = new ArrayList<String>();
 			try {
