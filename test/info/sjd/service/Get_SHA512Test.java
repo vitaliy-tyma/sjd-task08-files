@@ -1,4 +1,4 @@
-package info.sjd;
+package info.sjd.service;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
