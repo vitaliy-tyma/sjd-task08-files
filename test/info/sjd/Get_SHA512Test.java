@@ -6,6 +6,8 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
+import info.sjd.service.Get_SHA512;
+
 class Get_SHA512Test {
 
 	@Test
@@ -33,6 +35,8 @@ class Get_SHA512Test {
 		
 		assertTrue(Get_SHA512.randomIPhex(123456789).length() < 16);
 		assertTrue(Get_SHA512.randomIPhex(0).length() < 16);
+		
+		assertTrue(Get_SHA512.randomIPhex(0) != Get_SHA512.randomIPhex(0));
 	}
 
 }
