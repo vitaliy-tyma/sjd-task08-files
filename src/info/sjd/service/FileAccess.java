@@ -13,13 +13,13 @@ public class FileAccess {
 	
 	
 	/** saveToFile */
-	public static boolean saveToFile(String file_name, List<LogRec> log_rec_10, boolean append) {
+	public static boolean saveToFile(String file_name, LogRec log_rec, boolean append) {
 		final String LINE_SEP = System.getProperty("line.separator");
 
 		try (FileWriter writer = new FileWriter(file_name, append)) {
-			for (LogRec log : log_rec_10) {
-				writer.write(log.getString() + LINE_SEP);
-			}
+			//for (LogRec log : log_rec_10) {
+				writer.write(log_rec.getString() + LINE_SEP);
+			//}
 			writer.flush();
 		} catch (IOException e) {
 			e.printStackTrace();

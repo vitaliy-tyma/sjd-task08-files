@@ -57,7 +57,7 @@ public class AppRunner {
 		
 		
 		/** (VOID) Save logs to file. */
-		AppendFile.appendFile(FILE_NAME);
+		AppendFile.appendFile(FILE_NAME, 10);
 
 		
 		
