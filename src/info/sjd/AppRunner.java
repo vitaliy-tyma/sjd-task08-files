@@ -3,8 +3,7 @@ package info.sjd;
 import java.util.List;
 import java.util.logging.Logger;
 
-import info.sjd.service.AppendFile;
-import info.sjd.service.DelOldRecords;
+import info.sjd.model.LogRec;
 import info.sjd.service.FileAccess;
 
 /**
@@ -46,35 +45,25 @@ import info.sjd.service.FileAccess;
 
 public class AppRunner {
 
+	private static final String SEP = System.getProperty("file.separator");
+	private static final String DIR_NAME = "log" + SEP;
+	private static final String FILE_NAME = DIR_NAME + "task08.txt";
+	private static int size_of_collection = 10;
+	
 	/* MAIN ****************************************/
 	public static void main(String[] args) {
 
-		/** INITIALISATION */
-		String DIR_NAME = "log/";
-		String FILE_NAME = DIR_NAME + "task08.txt";
 
-		
-		
-		
+
 		/** (VOID) Save logs to file. */
-		AppendFile.appendFile(FILE_NAME, 10);
+		FileAccess.appendFile(FILE_NAME, size_of_collection);
 
-		
-		
-		
-		/** (List<String>) Read logs from log-file. */
-		List<String> lines = FileAccess.readFromFile(FILE_NAME);
-		/** Demo of usage of readFromFile method. */
-		Logger logger = Logger.getLogger(AppRunner.class.getName());
-		for (String line : lines) {
-			logger.info(line);
-		}
+		/** (List<LogRec>) Read logs from log-file. */
+		List<LogRec> lines = FileAccess.readFromFile(FILE_NAME);
 
-		
-		
-		
+
 		/** (VOID) Delete more then 3 days old records from the log-file. */
-		DelOldRecords.delOldRecords(FILE_NAME);
+		FileAccess.delOldRecords(FILE_NAME);
 
 	}
 
