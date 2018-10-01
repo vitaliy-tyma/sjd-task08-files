@@ -14,7 +14,7 @@ public class FileAccess {
 	protected final static String LINE_SEP = System.getProperty("line.separator");
 
 	/** saveToFile */
-	public static boolean saveToFile(String file_name, LogRec log_rec, boolean append) {
+	protected static boolean saveToFile(String file_name, LogRec log_rec, boolean append) {
 		
 		try (FileWriter writer = new FileWriter(file_name, append)) {
 			writer.write(log_rec.getString() + LINE_SEP);

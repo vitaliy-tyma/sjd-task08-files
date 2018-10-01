@@ -7,12 +7,12 @@ import java.security.NoSuchAlgorithmException;
 public class Get_SHA512 {
 
 	/** Get current time in milliseconds. */
-	public static long curTime() {
+	protected static long curTime() {
 		return System.currentTimeMillis();
 	}
 
 	/** Get random 9-digits DEC number. */
-	public static String randomSession9dec(int seed) {
+	protected static String randomSession9dec(int seed) {
 
 		long cur_time = curTime();
 
@@ -28,7 +28,7 @@ public class Get_SHA512 {
 	}
 
 	/** Get random IP IN DEC.DEC.DEC.DEC format. */
-	public static String randomIPhex(int seed) {
+	protected static String randomIPhex(int seed) {
 
 		long cur_time = curTime();
 
@@ -48,7 +48,7 @@ public class Get_SHA512 {
 	}
 
 	/** Copy-Paste */
-	public static String get_SHA_512_SecurePassword(String passwordToHash, String salt) {
+	private static String get_SHA_512_SecurePassword(String passwordToHash, String salt) {
 		String generatedPassword = null;
 		try {
 			MessageDigest md = MessageDigest.getInstance("SHA-512");
