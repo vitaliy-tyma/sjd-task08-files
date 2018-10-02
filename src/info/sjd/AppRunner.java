@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.logging.Logger;
 
 import info.sjd.model.LogRec;
+import info.sjd.service.AppendInThreeThreads;
 import info.sjd.service.FileAccess;
 
 public class AppRunner {
@@ -19,14 +20,22 @@ public class AppRunner {
 
 
 		/** (VOID) Save logs to file. */
-		FileAccess.appendFile(FILE_NAME, size_of_collection);
+		//FileAccess.appendFile(FILE_NAME, size_of_collection);
 
 		/** (List<LogRec>) Read logs from log-file. */
-		List<LogRec> lines = FileAccess.readFromFile(FILE_NAME);
+		//List<LogRec> lines = FileAccess.readFromFile(FILE_NAME);
 
 
 		/** (VOID) Delete more then 3 days old records from the log-file. */
-		FileAccess.delOldRecords(FILE_NAME);
+		//FileAccess.delOldRecords(FILE_NAME);
+		
+		/** Multithreading - 10*3*3 = 90. */
+		new AppendInThreeThreads(FILE_NAME, size_of_collection);
+		
+		
+		/* END OF PROCESSING.*/
+		Logger logger = Logger.getLogger(AppRunner.class.getName());
+		logger.info("END OF PROCESSING.");
 
 	}
 
