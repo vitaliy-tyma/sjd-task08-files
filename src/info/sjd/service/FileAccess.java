@@ -41,6 +41,7 @@ public class FileAccess extends Thread {
 
 	}
 
+	/** Append new records. */
 	public synchronized static void appendFile(String file_name, int size_of_collection) {
 
 		/** GET SEED */
@@ -61,7 +62,7 @@ public class FileAccess extends Thread {
 	}
 
 	/** saveToFile */
-	protected static boolean saveToFile(String file_name, LogRec log_rec, boolean append) {
+	protected synchronized static boolean saveToFile(String file_name, LogRec log_rec, boolean append) {
 
 		try (FileWriter writer = new FileWriter(file_name, append)) {
 			writer.write(log_rec.getString() + LINE_SEP);
@@ -74,7 +75,7 @@ public class FileAccess extends Thread {
 	}
 
 	/** readFromFile */
-	public static List<LogRec> readFromFile(String file_name) {
+	public synchronized static List<LogRec> readFromFile(String file_name) {
 
 		List<LogRec> log_recs = new ArrayList<LogRec>();
 		List<String> lines = new ArrayList<String>();
@@ -95,7 +96,7 @@ public class FileAccess extends Thread {
 	}
 
 	/** Delete old records. */
-	public static void delOldRecords(String file_name) {
+	public synchronized static void delOldRecords(String file_name) {
 
 		long curr_time = Get_SHA512.curTime();
 		long three_days_ago = curr_time - 3 * 24 * 60 * 60 * 1000;
@@ -112,6 +113,5 @@ public class FileAccess extends Thread {
 
 	}
 
-	/** Append new records. */
 
 }

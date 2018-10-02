@@ -1,10 +1,7 @@
 package info.sjd;
 
 import java.util.List;
-import java.util.logging.Logger;
-
 import info.sjd.model.LogRec;
-import info.sjd.service.AppendInThreeThreads;
 import info.sjd.service.FileAccess;
 
 public class AppRunner {
@@ -30,12 +27,11 @@ public class AppRunner {
 		//FileAccess.delOldRecords(FILE_NAME);
 		
 		/** Multithreading - 10*3*3 = 90. */
-		new AppendInThreeThreads(FILE_NAME, size_of_collection);
-		
-		
-		/* END OF PROCESSING.*/
-		Logger logger = Logger.getLogger(AppRunner.class.getName());
-		logger.info("END OF PROCESSING.");
+		for (int i = 0 ; i < 3; i++) {
+			new FileAccess(FILE_NAME, size_of_collection).start();
+		}
+
+
 
 	}
 
