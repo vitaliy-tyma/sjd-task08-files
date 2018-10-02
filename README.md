@@ -1,5 +1,5 @@
 # sjd-task08-files
-/**
+/***
  * 
  * @author Vitaliy-tyma
  * 
